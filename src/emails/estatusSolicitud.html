@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .image {
+            background: url('http://lorempixel.com/40/20/abstract');
+            background-size: cover;
+        }
+
+        .solid {
+            background: white;
+        }
+
+        .backdrop {
+            width: 50%;
+            float: left;
+        }
+
+        .box {
+            padding: 0em 0% 0em;
+            margin: 0em 3%;
+        }
+
+        /* Make text visible on image background */
+
+        h3,
+        p {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 1em;
+            margin: 0;
+        }
+
+        .zag-out:after {
+            top: 100%;
+            background: linear-gradient(135deg, white 33.333%, transparent 0), linear-gradient(-135deg, white 33.333%, transparent 0);
+        }
+
+        .zag-in:after {
+            bottom: 0;
+            background: linear-gradient(45deg, white 33.333%, transparent 0), linear-gradient(-45deg, white 33.333%, transparent 0);
+        }
+
+        .zig {
+            position: relative;
+        }
+
+        .zig::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 0.9em;
+            /*desired tooth height*/
+            background-size: 1.6em 100%;
+            /*width (1st num) must be twice tooth height*/
+            background-position: center;
+        }
+
+        .shadow {
+            -webkit-filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 1px 2px);
+            /*optional*/
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .tabla {
+            width: 100%;
+            font-weight: 200;
+        }
+
+        .tabla .head {
+            background: #f68646;
+            padding: 10px;
+        }
+
+        .tabla .head th {
+            padding: 3px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .tabla .foot {
+            background: #dfe1e4;
+        }
+
+        .tabla .total {
+            background: #f68646;
+        }
+
+        .tabla tr th {
+            font-weight: 200;
+        }
+
+        .tabla .descripcion {
+            border-radius: 10px 0px 0px 10px;
+        }
+
+        .tabla .precio {
+            border-radius: 0px 10px 10px 0px;
+        }
+
+        .tabla .cantidad {
+            text-align: center;
+        }
+
+        .tabla .items .precio {
+            text-align: right;
+            padding-right: 30px;
+        }
+
+        .tabla .items td {
+            font-size: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .tabla .producto {
+            padding-left: 30px;
+            font-size: 12px;
+        }
+
+        .tabla .foot .producto {
+            border-radius: 40px 0px 0px 40px;
+        }
+
+        .tabla .foot .precio {
+            border-radius: 0px 40px 40px 0px;
+            text-align: right;
+            padding-right: 30px;
+        }
+
+        .tabla .total .producto {
+            border-radius: 40px 0px 0px 40px;
+        }
+
+        .tabla .total .precio {
+            border-radius: 0px 40px 40px 0px;
+            text-align: right;
+            font-size: 12px;
+            padding-right: 30px;
+        }
+
+        .tabla tr td {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        .text1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 26px;
+            color: black;
+            text-align: left;
+        }
+
+        .text11 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 1.4;
+            color: #787878;
+            text-align: left;
+        }
+
+        .text2 {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            word-wrap: break-word;
+            padding: 10px 10px 10px 0px;
+            font-family: 'Poppins', sans-serif;
+            color: black;
+        }
+
+        .text32 {
+            text-align: center;
+            font-size: 15px;
+            word-wrap: break-word;
+            font-weight: bold;
+            padding: 0px 10px 10px 0px;
+            font-family: 'Poppins', sans-serif;
+            color: black !important;
+            line-height: 1;
+        }
+
+        .text34 {
+            text-align: center;
+            font-size: 15px;
+            font-weight: 400 !important;
+            word-wrap: break-word;
+            padding: 10px 10px 10px 0px;
+            font-family: 'Poppins', sans-serif;
+            color: black !important;
+        }
+
+        .text35 {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 400 !important;
+            word-wrap: break-word;
+            padding: 10px 10px 10px 0px;
+            font-family: 'Poppins', sans-serif;
+            color: black !important;
+        }
+
+        .fdiv {
+            margin: 0px auto;
+            max-width: 792px;
+        }
+
+        .tabb {
+            font-size: 0px;
+            width: 100%;
+        }
+
+        .algg {
+            text-align: center;
+            vertical-align: top;
+            direction: ltr;
+            font-size: 0px;
+        }
+
+        .divvv {
+            vertical-align: top;
+            display: inline-block;
+            direction: ltr;
+            font-size: 13px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .alg2 {
+            text-align: center;
+        }
+
+        .imagen {
+            width: 792px;
+        }
+
+        .codigo {
+            font-weight: 500;
+            padding: 30px 40px;
+            display: block;
+            text-decoration: none;
+            color: #000;
+            font-size: 24px;
+            line-height: 8.79px;
+            margin: 0px;
+        }
+
+        .dg {
+            display: flex;
+        }
+
+        .tddd {
+            text-align: center;
+        }
+
+        .divv2 {
+            border-radius: 5px;
+            margin: 0 auto;
+        }
+
+        .dvv3 {
+            display: flex;
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .dvv4 {
+            margin: 0px auto;
+            max-width: 600px;
+            margin-top: 50px;
+        }
+
+        .td22 {
+            text-align: center;
+            vertical-align: top;
+            direction: ltr;
+            font-size: 0px;
+        }
+
+        .dvvi3 {
+            vertical-align: top;
+            display: inline-block;
+            direction: ltr;
+            font-size: 13px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .tdd3 {
+            word-wrap: break-word;
+            font-size: 0px;
+            padding: 0px 0px 30px 0px;
+        }
+
+        .text3 {
+            font-size: 1px;
+            margin: 0px auto;
+            border-top: 3px solid #f5f5f5;
+            width: 100%;
+        }
+
+        .tdd4 {
+            word-wrap: break-word;
+            font-size: 0px;
+            padding: 0px 0px 20px 0px;
+        }
+
+        .divv7 {
+            color: #000;
+            font-size: 13px;
+            line-height: 22px;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .text4 {
+            font-family: Poppins, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            margin: 0;
+            color: black;
+        }
+
+        .text5 {
+            color: black;
+            font-weight: 400;
+            font-size: 14px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .emal {
+            color: #f58437;
+            font-weight: 600;
+        }
+
+        .divv9 {
+            display: flex;
+            width: 350px;
+            margin: auto;
+            margin-top: 25px;
+            justify-content: center;
+        }
+
+        .divv8 {
+            display: flex;
+            padding-left: 12px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .mg1 {
+            margin: 0px 3px 0px 6px;
+        }
+
+        .mg2 {
+            margin: 0px 6px 0px 3px;
+        }
+
+        .mg3 {
+            margin: 0px 6px 0px 0px;
+        }
+
+        .imgred {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dvv4">
+        <table class="tabb">
+            <tbody>
+                <tr>
+                    <td class="algg">
+                        <div class="divvv">
+                            <table class="tabb">
+                                <tbody style="line-height: 1;">
+                                    <tr>
+                                        <td>
+                                            <h2 class="text1"><strong>SEMAT</strong></h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h2 class="text1">Estatus solicitud</h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text11">Estimado usuario  la solicitud de tipo  realizada la fecha  ha sido procesada con exito</span></td>
+                                    </tr>
+                                    <tr style="display: flex;align-items: baseline;;margin-top: 20px;">
+                                        <td><span class="text11">Ha sido asignada a la institucion  Se le estara informando via correo cuando se aprobada o rechazada</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="tddd"></td>
+                </tr>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

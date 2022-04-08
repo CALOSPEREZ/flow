@@ -1,0 +1,29 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": true
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    ["@babel/plugin-syntax-optional-chaining"],
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@components": "./src/components",
+          "@componentsController": "./src/controller/components",
+          "@middleware": "./src/middleware",
+          "@services": "./src",
+          "@config": "./src/config",
+          "@libs": "./src/libs",
+          "@helper": "./src/helpers"
+        }
+      }
+    ]
+  ]
+}

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <mate charest="utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+    <style>
+        /** Define the margins of your page **/
+        @page {
+            margin: 80px 50px;
+        }
+
+
+        body {
+            font-family: 'Arial';
+            font-style: normal;
+            font-size: 13px;
+        }
+
+        header {
+            position: fixed;
+            top: -60px;
+            left: 0px;
+            right: 0px;
+            height: 50px;
+
+
+        }
+
+        footer {
+            position: fixed;
+            bottom: -50px;
+            left: 0px;
+            right: 0px;
+            height: 50px;
+
+
+        }
+
+        table,
+        tbody,
+        td {
+            padding: 5px;
+        }
+
+        .titulo {
+            font-family: 'Arial Bold' !important;
+            font-size: x-large;
+            font-style: normal;
+        }
+
+        .tab-font {
+            font-family: 'Arial' !important;
+        }
+
+        .tab-font tbody tr:first-child td {
+            font-family: 'Arial Bold' !important;
+        }
+
+        .tab-font-result tbody tr td span {
+            font-family: 'Arial Bold' !important;
+        }
+
+        .break_page {
+            page-break-after: always;
+        }
+
+        .line {
+            position: absolute;
+            top: 50px;
+            left: -60px;
+            height: 8px;
+        }
+
+        .line_foot {
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+            position: absolute;
+            top: 20px;
+            left: -60px;
+            height: 8px;
+        }
+
+        .img-logo {
+            /* display: block; */
+            max-width: 100px;
+            max-height: 40px;
+            width: auto;
+            height: auto;
+        }
+
+        table.outer-border-gray {
+            border: 1px solid #d4d4d4;
+
+        }
+
+        table.outer-border-black {
+            border: 1px solid #000;
+
+        }
+
+        table.tab-border {
+            border-collapse: collapse;
+            border-spacing: 0;
+
+        }
+
+        table.inner-border-gray>thead>tr>th,
+        table.inner-border-gray>thead>tr>td,
+        table.inner-border-gray>tbody>tr>th,
+        table.inner-border-gray>tbody>tr>td,
+        table.inner-border-gray>tfoot>tr>th,
+        table.inner-border-gray>tfoot>tr>td {
+            border-bottom: 1px solid #d4d4d4;
+            border-right: 1px solid #d4d4d4;
+        }
+
+        table.inner-border-black>thead>tr>th,
+        table.inner-border-black>thead>tr>td,
+        table.inner-border-black>tbody>tr>th,
+        table.inner-border-black>tbody>tr>td,
+        table.inner-border-black>tfoot>tr>th,
+        table.inner-border-black>tfoot>tr>td {
+            border-bottom: 1px solid #000;
+            border-right: 1px solid #000;
+        }
+
+        table.inner-border>thead>tr> :last-child,
+        table.inner-border>tbody>tr> :last-child,
+        table.inner-border>tfoot>tr> :last-child {
+            border-right: 0;
+        }
+
+        table.inner-border> :last-child>tr:last-child>td,
+        table.inner-border> :last-child>tr:last-child>th {
+            border-bottom: 0;
+        }
+
+        table.inner-border>tbody>tr>td {
+            padding-left: 5px;
+        }
+
+        .title {
+            text-align: center;
+            font-family: 'Arial Bold' !important;
+            font-size: large;
+        }
+
+        .pos_box {
+            position: fixed;
+            bottom: 50px;
+            left: 0px;
+            right: 0px;
+            height: 50px;
+        }
+
+        .rq-obligatorio {
+            background-color: #d4d4d4;
+        }
+
+        main p {
+            margin-left: 30px;
+        }
+
+        .inpt {
+            border-bottom: solid 1px;
+            padding: 2px;
+            /*background: rgb(255, 255, 255);*/
+        }
+    </style>
+    <table align="center" width="90%" style="background: #ebebeb" class="tab-font">
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td width="40%">
+                <label for="p1"> {{this.idioma.name}}</label><br>
+                <div class="inpt">
+                    {{this.nombre}}
+                </div>
+
+            </td>
+            <td width="40%">
+                <label for="p1">{{this.idioma.Lastname}}</label><br>
+                <div class="inpt">
+                    {{this.apellido}}
+                </div>
+
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td width="40%">
+                <label for="p1">{{this.idioma.email}}</label><br>
+                <div class="inpt">
+                    {{this.correo}}
+                </div>
+
+            </td>
+            <td width="40%">
+                <label for="p1">{{this.idioma.nationality}}</label><br>
+                <div class="inpt">
+                    {{this.nacionalidad}}
+                </div>
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td width="40%">
+                <label for="p1">{{this.idioma.telephone}}</label><br>
+                <div class="inpt">
+                    {{this.telefono}}
+                </div>
+
+            </td>
+            <td width="40%">
+                <label for="p1">{{this.idioma.number}}</label><br>
+                <div class="inpt">
+                    {{this.rut}}
+                </div>
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td width="40%">
+                <label for="p1">{{this.idioma.checkin}}</label><br>
+                <div class="inpt">
+                    {{this.fechainicial}}
+                </div>
+
+            </td>
+            <td width="40%">
+                &nbsp;
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td width="40%">
+                <label for="p1">{{this.idioma.checkout}}</label><br>
+                <div class="inpt">
+                    {{this.fechafinal}}
+                </div>
+
+            </td>
+            <td width="40%">
+                &nbsp;
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+
+    </table>
+    <br>
+    <div class="subtitle" style="text-align: center;">{{this.idioma.messaje}}
+    </div>
+    <br>
+    <table align="center" width="90%" style="background: #ebebeb" class="tab-font">
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td width="90%">
+                <div>
+                    {{#if covid}}
+                    <input type="checkbox" checked />
+                    {{else}}
+                    <input type="checkbox"  />
+                    {{/if}}
+                    <label for="metodo">{{this.idioma.covid}}</label>
+                </div>
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td width="90%">
+                <div>
+
+                    <div style="float:left;">
+                        {{#if sintomas}}
+                        <input type="checkbox" checked />
+                        {{else}}
+                        <input type="checkbox"  />
+                        {{/if}}
+                    </div>
+                    <div style="float:left;padding-left: 3px;width: 90%;/* outline: red solid thin; */"> <label
+                            for="metodo"> {{this.idioma.symptom}}</label></div>
+                </div>
+
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td width="90%">
+                <div>
+                    {{#if contacto}}
+                    <input type="checkbox" checked />
+                    {{else}}
+                    <input type="checkbox"  />
+                    {{/if}}
+                    <label for="metodo">{{this.idioma.contact}}</label>
+                </div>
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td width="90%">
+                <div>
+                    {{#if cuarentena}}
+                    <span
+                        style=" margin-left:30px; margin-top:8px;  border: 1px solid #000;  display:inline-block;background-color: #000000;height:10px;width:10px;overflow:hidden;">
+                    </span>
+
+                    {{else}}
+                    <span
+                        style=" margin-left:30px; margin-top:8px;  border: 1px solid #000;  display:inline-block;background-color: #ffffff;height:10px;width:10px;overflow:hidden;">
+                    </span>
+                    {{/if}}
+                    <label for="metodo">{{this.idioma.declared}}</label>
+                </div>
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+    </table>
+    <br>
+
+
+    <table align="center" width="90%" style="background: #ebebeb" class="tab-font">
+        {{#if acompat}}
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+        {{#each acompat}}
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td width="40%">
+                <label for="p1">
+                    {{#if this.validatei}}
+                    Acompañantes
+                    {{else}}
+                    Companion
+                    {{/if}}
+
+                </label><br>
+                <div class="inpt">
+                    {{this.nombre1}}
+                </div> <br>
+                <div class="inpt">
+                    {{this.rut1}}
+                </div>
+            </td>
+            <td width="40%">
+                <label for="p1">
+                    {{#if this.validatei}}
+                    Acompañantes
+                    {{else}}
+                    Companion
+                    {{/if}}
+                </label><br>
+                <div class="inpt">
+                    {{#if this.nombre2}}
+                    {{this.nombre2}}
+                    {{else}}
+                    &nbsp;
+                    {{/if}}
+
+                </div> <br>
+                <div class="inpt">
+                    {{#if this.rut2}}
+                    {{this.rut2}}
+                    {{else}}
+                    &nbsp;
+                    {{/if}}
+
+                </div>
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+        {{/each}}
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+        {{/if}}
+    </table>
+
+
+    <br>
+    <table align="center" width="90%" style="background: #ebebeb" class="tab-font">
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td width="90%">
+                <div>
+                    {{#if menores}}
+                    <span
+                        style=" margin-left:30px; margin-top:8px;  border: 1px solid #000;  display:inline-block;background-color: #000000;height:10px;width:10px;overflow:hidden;">
+                    </span>
+
+                    {{else}}
+                    <span
+                        style=" margin-left:30px; margin-top:8px;  border: 1px solid #000;  display:inline-block;background-color: #ffffff;height:10px;width:10px;overflow:hidden;">
+                    </span>
+                    {{/if}}
+                    <label for="metodo">{{this.idioma.son}}</label>
+                </div>
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+    </table>
+    <br>
+    {{#if menores}}
+    <table align="center" width="90%" style="background: #ebebeb" class="tab-font">
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+        {{#each hijos}}
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td width="40%">
+                <label for="p1">
+
+                    {{#if validatei}}
+                    Niños
+                    {{else}}
+                    Childrens
+                    {{/if}}
+                </label><br>
+                <div class="inpt">
+                    {{this.nombre1}}
+                </div> <br>
+                <div class="inpt">
+                    {{this.rut1}}
+                </div>
+            </td>
+            <td width="40%">
+                <label for="p1">
+                    {{#if validatei}}
+                    Niños
+                    {{else}}
+                    Childrens
+                    {{/if}}
+                </label><br>
+                <div class="inpt">
+                    {{#if this.nombre2}}
+                    {{this.nombre2}}
+                    {{else}}
+                    &nbsp;
+                    {{/if}}
+
+                </div> <br>
+                <div class="inpt">
+                    {{#if this.rut2}}
+                    {{this.rut2}}
+                    {{else}}
+                    &nbsp;
+                    {{/if}}
+
+                </div>
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+
+        {{/each}}
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+    </table>
+    <br>
+    {{/if}}
+    <table align="center" width="90%" class="tab-font">
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td align="center" width="90%">
+                <div style=" background-color: #000000; width: 150px; height:30px;  ">
+                    <img src="{{logo}}" alt="%=ruta%" width="100px" height="30">
+                </div>
+                {{#if sublogo}}
+                <div style=" background-color: #000000; width: 150px; height:20px;  ">
+                    <img src="{{sublogo}}" alt="%=ruta%" width="150px" height="30">
+                </div>
+                {{/if}}
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+    </table>
+
+    <table align="center" width="90%" style="background: #ebebeb" class="tab-font">
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="5%">&nbsp;</td>
+            <td width="90%">
+                <div>
+
+                    <label for="metodo">{{texto}}</label>
+                </div>
+            </td>
+            <td width="5%">&nbsp;</td>
+        </tr>
+
+        <tr style="line-height: 4px;">
+            <td colspan="4">&nbsp;</td>
+        </tr>
+    </table>
+
+
+</body>
+
+</html>
