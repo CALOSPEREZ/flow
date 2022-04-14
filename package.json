@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src --out-dir build",
     "dev": "nodemon src/index.js --exec babel-node ",
-    "start": "node build/index.js",
+    "start": "src/index.js --exec babel-node",
     "heroku-postbuild": "npm run build"
   },
   "author": "",
