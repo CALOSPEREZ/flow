@@ -31,12 +31,33 @@ const plan = (config, method) => {
       break;
   }
 };
+const ds = (params, method) => {
+  switch (params) {
+    case 1:
+      return ds_plan(config.ds, method);
+      break;
+    default:
+      return 0;
+      break;
+  }
+};
+const ds_plan = (config, method) => {
+  switch (method) {
+    case 1:
+      return config.basico;
+      break;
+
+    default:
+      return config.avanzado;
+      break;
+  }
+};
 export const formate = (param) => {
   return {
     commerceOrder: Math.floor(Math.random() * (2000 - 1100 + 1)) + 1100,
     subject: param.subject,
     currency: param.currency,
-    amount: categorys(param.category, param.type),
+    amount: categorys(param.category, param.type) + ds(param.ds, param.ds_type),
     email: param.email,
     paymentMethod: param.paymentMethod,
     urlConfirmation: config.baseURL + "/payment_confirm",

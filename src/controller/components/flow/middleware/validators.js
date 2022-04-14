@@ -15,6 +15,10 @@ export const createRequest = async (req, res, next) => {
   await check("category", ` category ${message.message_request} `)
     .notEmpty()
     .run(req);
+  await check("ds_type", ` ds_type ${message.message_request} `)
+    .notEmpty()
+    .run(req);
+  await check("ds", ` ds ${message.message_request} `).notEmpty().run(req);
   await check("paymentMethod", ` paymentMethod ${message.message_request} `)
     .notEmpty()
     .run(req);

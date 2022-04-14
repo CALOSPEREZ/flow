@@ -7,9 +7,9 @@ export const config = {
   payment_confirm: "/payment_confirm",
   metod: "payment/create",
   restaurantes: {
-    basico: 350.0,
-    intermedio: 10.0,
-    avanzado: 15.0,
+    basico: 48000,
+    intermedio: 60000,
+    avanzado: 90000,
   },
   agencia: {
     basico: 15.0,
@@ -22,6 +22,10 @@ export const config = {
   },
   adicional: {
     basico: 30.0,
+  },
+  ds: {
+    basico: 100,
+    intermedio: 134000,
   },
   flow: "https://www.flow.cl/api/payment/create",
 };
