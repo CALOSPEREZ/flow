@@ -25,7 +25,7 @@ export const config = {
   },
   ds: {
     basico: 100,
-    intermedio: 134000,
+    avanzado: 134000,
   },
   flow: "https://www.flow.cl/api/payment/create",
 };
