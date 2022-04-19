@@ -10,8 +10,8 @@ export const config = {
     // basico: 48000,
     // intermedio: 60000,
     // avanzado: 90000,
-    basico: 100,
     intermedio: 200,
+    basico: 100,
     avanzado: 300,
   },
   agencia: {
