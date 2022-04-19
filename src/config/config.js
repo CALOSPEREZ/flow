@@ -7,9 +7,12 @@ export const config = {
   payment_confirm: "/payment_confirm",
   metod: "payment/create",
   restaurantes: {
-    basico: 48000,
-    intermedio: 60000,
-    avanzado: 90000,
+    // basico: 48000,
+    // intermedio: 60000,
+    // avanzado: 90000,
+    basico: 100,
+    intermedio: 200,
+    avanzado: 300,
   },
   agencia: {
     basico: 15.0,
