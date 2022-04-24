@@ -2,7 +2,7 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-// import * as prueba from "./db";
+import * as prueba from "./db";
 import path from "path";
 
 // import routes
@@ -13,7 +13,7 @@ import flow from "./routes/flow.routes";
 const app = express();
 
 // settings
-app.set("port", process.env.PORT || 4015);
+app.set("port", process.env.PORT || 4016);
 
 // middlewares
 app.use(cors());

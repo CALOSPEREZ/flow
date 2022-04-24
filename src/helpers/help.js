@@ -1,6 +1,6 @@
 import * as CryptoJS from "crypto-js";
 import { config } from "@config/config";
-
+import jwt from "jsonwebtoken";
 const categorys = (params, method) => {
   switch (params) {
     case 1:
@@ -41,6 +41,16 @@ const ds = (params, method) => {
       break;
   }
 };
+const ds_database = (params) => {
+  switch (params) {
+    case 1:
+      return true;
+      break;
+    default:
+      return false;
+      break;
+  }
+};
 const ds_plan = (config, method) => {
   switch (method) {
     case 1:
@@ -52,15 +62,82 @@ const ds_plan = (config, method) => {
       break;
   }
 };
-export const formate = (param) => {
+const categorys_database = (params) => {
+  switch (params) {
+    case 1:
+      return "restaurante";
+      break;
+    case 2:
+      return "agencia";
+      break;
+    case 3:
+      return "museo";
+      break;
+    default:
+      return "salud";
+      break;
+  }
+};
+const plan_database = (method) => {
+  switch (method) {
+    case 1:
+      return "basico";
+      break;
+    case 2:
+      return "intermedio";
+      break;
+
+    default:
+      return "avanzado";
+      break;
+  }
+};
+export const formate = (param, token) => {
   return {
-    commerceOrder: Math.floor(Math.random() * (2000 - 1100 + 1)) + 1100,
+    commerceOrder:
+      Math.floor(Math.random(10) * (2000 - Math.random(1000) + 1)) + 1100,
     subject: param.subject,
     currency: param.currency,
     amount: categorys(param.category, param.type) + ds(param.ds, param.ds_type),
     email: param.email,
     paymentMethod: param.paymentMethod,
-    urlConfirmation: config.baseURL + "/payment_confirm",
-    urlReturn: config.baseURL + "/result",
+    urlConfirmation: config.baseURL + config.payment_confirm,
+    urlReturn: config.baseURL + `/result?token=${token}`,
   };
 };
+export const formateDatabase = (param) => {
+  return {
+    flowOrder: param.commerceOrder,
+    nombre_cliente: param.subject,
+    plan: categorys_database(param.category),
+    tipo_plan: plan_database(param.type),
+    design: ds_database(param.ds),
+    tipo_design: param.ds_type >= 1 ? plan_database(param.ds_type) : "",
+    monto_design: ds(param.ds, param.ds_type),
+    monto_plan: categorys(param.category, param.type),
+    email: param.email,
+    token: param.token,
+  };
+};
+export const formateDatabaseupdateinitial = (param, token) => {
+  return {
+    flowOrder: param.commerceOrder,
+    token: token,
+  };
+};
+export const formateDatabaseUpdate = (param) => {
+  return {
+    token: param.token,
+    payment_date: param.paymentData.date,
+    payment_amount: param.paymentData.amount,
+    amount: param.amount,
+    transferDate: param.paymentData.transferDate,
+    media: param.paymentData.media,
+    currency: param.paymentData.currency,
+  };
+};
+
+export const JWT = (param) =>
+  jwt.sign(param, "my_secret_ke", {
+    // expiresIn: "10m",
+  });
