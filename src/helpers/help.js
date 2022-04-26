@@ -102,7 +102,7 @@ export const formate = (param, token) => {
     email: param.email,
     paymentMethod: param.paymentMethod,
     urlConfirmation: config.baseURL + config.payment_confirm,
-    urlReturn: config.baseURL + `/result?token=${token}`,
+    urlReturn: config.baseURL + `/api/resultR?token=${token}`,
   };
 };
 export const formateDatabase = (param) => {
@@ -121,13 +121,13 @@ export const formateDatabase = (param) => {
 };
 export const formateDatabaseupdateinitial = (param, token) => {
   return {
-    flowOrder: param.commerceOrder,
     token: token,
   };
 };
 export const formateDatabaseUpdate = (param) => {
   return {
     token: param.token,
+    flowOrder: param.flowOrder,
     payment_date: param.paymentData.date,
     payment_amount: param.paymentData.amount,
     amount: param.amount,

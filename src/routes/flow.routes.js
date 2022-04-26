@@ -6,5 +6,7 @@ const router = Router();
 router.post("/flow", [validate.createRequest], flow.create);
 router.post("/payment_confirm", flow.payment_confirm);
 router.get("/result", middlewares.token, flow.result);
-
+router.post("/resultR", flow.resultR);
+router.get("/resultR", flow.resultR);
+router.get("/info", flow.info);
 export default router;

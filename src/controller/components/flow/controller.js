@@ -59,3 +59,25 @@ export const result = async (req, res) => {
     handleError(error, res);
   }
 };
+
+export const resultR = async (req, res) => {
+  try {
+    const data = req.query.token;
+    res.redirect(`https://landingqr.netlify.app/result/?token=${data}`);
+  } catch (error) {
+    handleError(error, res);
+  }
+};
+export const info = async (req, res) => {
+  try {
+    let params = {
+      token: req.query.token,
+    };
+    let serviceName = "payment/getStatus";
+    const flowApi = new FlowApi(config);
+    let response = await flowApi.send(serviceName, params, "GET");
+    handleResponse(res, 200, message.update, response);
+  } catch (error) {
+    handleError(error, res);
+  }
+};

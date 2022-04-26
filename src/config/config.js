@@ -2,8 +2,8 @@ export const config = {
   apiKey: "1FA65AD3-B303-42A2-972F-42E2L6EE6EC0",
   secretKey: "34c785b13d4499ef294ab86e7bc829da1d95fdc1",
   apiURL: "https://flow.cl/api",
-  baseURL: "https://71ee-190-142-207-50.ngrok.io",
-  result: "/result?id=10",
+  baseURL: "https://api.dev.cartaenqr.me",
+  baseURLF: "https://landingqr.netlify.app",
   payment_confirm: "/api/payment_confirm",
   metod: "payment/create",
   restaurantes: {
