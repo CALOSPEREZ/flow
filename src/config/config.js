@@ -3,7 +3,6 @@ export const config = {
   secretKey: "34c785b13d4499ef294ab86e7bc829da1d95fdc1",
   apiURL: "https://flow.cl/api",
   baseURL: "https://api.dev.cartaenqr.me",
-  baseURLF: "https://landingqr.netlify.app",
   payment_confirm: "/api/payment_confirm",
   metod: "payment/create",
   restaurantes: {

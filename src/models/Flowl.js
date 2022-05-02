@@ -9,6 +9,9 @@ export const FlowModel = {
     type: Sequelize.DataTypes.INTEGER,
     allowNull: true,
   },
+  comercenum: {
+    type: Sequelize.DataTypes.STRING,
+  },
   cod_cliente: {
     type: Sequelize.DataTypes.STRING,
   },

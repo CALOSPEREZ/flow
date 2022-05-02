@@ -101,7 +101,7 @@ export const formate = (param, token) => {
     amount: categorys(param.category, param.type) + ds(param.ds, param.ds_type),
     email: param.email,
     paymentMethod: param.paymentMethod,
-    urlConfirmation: config.baseURL + config.payment_confirm,
+    urlConfirmation: `${config.baseURL}${config.payment_confirm}/?token=${token}`,
     urlReturn: config.baseURL + `/api/resultR?token=${token}`,
   };
 };
@@ -127,6 +127,7 @@ export const formateDatabaseupdateinitial = (param, token) => {
 export const formateDatabaseUpdate = (param) => {
   return {
     token: param.token,
+    comercenum: param.commerceOrder,
     flowOrder: param.flowOrder,
     payment_date: param.paymentData.date,
     payment_amount: param.paymentData.amount,

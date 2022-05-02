@@ -5,6 +5,7 @@ export const findInstalacionResource = (resource) => ({
 });
 export const reporteResource = (resource) => ({
   flowOrder: resource.flowOrder,
+  comercenum: resource.comercenum,
   nombre_cliente: resource.nombre_cliente,
   plan: resource.plan,
   tipo_plan: resource.tipo_plan,

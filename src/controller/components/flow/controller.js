@@ -11,17 +11,16 @@ import {
   JWT,
 } from "@helper/help";
 import { flowcreate, flowupdate, flowupdateinitial, show } from "./daoDatabase";
-
+import jwt from "jsonwebtoken";
 export const create = async (req, res) => {
   try {
     const flowApi = new FlowApi(config);
     const serviceName = "payment/create";
 
     const data = await flowcreate(formateDatabase(req.body));
-    const token = JWT({ id: data.id });
+    const token = JWT({ id: data.id, plan: data.plan });
     const body = formate(req.body, token);
     const response = await flowApi.send(serviceName, body, "POST");
-
     const update = formateDatabaseupdateinitial(body, response.token);
     flowupdateinitial(update, data.id);
     handleResponse(
@@ -63,7 +62,10 @@ export const result = async (req, res) => {
 export const resultR = async (req, res) => {
   try {
     const data = req.query.token;
-    res.redirect(`https://landingqr.netlify.app/result/?token=${data}`);
+    const model = jwt.decode(req.query.token);
+    res.redirect(
+      `https://landingqr.netlify.app/result/?token=${data}&origin=${model.plan}`
+    );
   } catch (error) {
     handleError(error, res);
   }
